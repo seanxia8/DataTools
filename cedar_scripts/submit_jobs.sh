@@ -8,7 +8,7 @@ set -e
 #export DATATOOLS=/project/rpp-blairt2k/machine_learning/production_software/DataTools
 export DATATOOLS=/home/junjiex/pro-junjiex/WatChMaL/DataTools
 cd $DATATOOLS/cedar_scripts
-source sourceme.sh
+#source sourceme.sh %use local ROOT, G4, and WCSim builds specified in ~/.bashrc
 
 # name and output data directory for this run
 name=WCTEmPMT_test
@@ -24,6 +24,7 @@ mkdir -p "$LOGDIR"
 cd "$LOGDIR"
 
 # submit jobs with desired options
-JOBTIME=`date` sbatch --time=0:59:00 --array=0-9 --job-name=e "$DATATOOLS/cedar_scripts/run_WCSim_job.sh" "$name" "$data_dir" -n 100 -e 100 -E 1000 -P e- -d 2pi -p fix -x 0 -y 0 -z 0
-JOBTIME=`date` sbatch --time=0:59:00 --array=0-9 --job-name=mu "$DATATOOLS/cedar_scripts/run_WCSim_job.sh" "$name" "$data_dir" -n 100 -e 100 -E 1000 -P mu- -d 2pi -p fix -x 0 -y 0 -z 0
-JOBTIME=`date` sbatch --time=0:59:00 --array=0-9 --job-name=gamma "$DATATOOLS/cedar_scripts/run_WCSim_job.sh" "$name" "$data_dir" -n 100 -e 100 -E 1000 -P gamma -d 2pi -p fix -x 0 -y 0 -z 0
+JOBTIME=`date` sbatch --output="$DATATOOLS/cedar_scripts/slurm_log/log-WCSim-e-%J.txt" --error="$DATATOOLS/cedar_scripts/slurm_log/log-WCSim-e-%J.txt" --time=23:59:00 --array=0-99 --job-name=e "$DATATOOLS/cedar_scripts/run_WCSim_job.sh" "$name" "$data_dir" -n 1000 -e 100 -E 1500 -P e- -d 4pi -p fix -x 0 -y 0 -z 0
+JOBTIME=`date` sbatch --output="$DATATOOLS/cedar_scripts/slurm_log/log-WCSim-mu-%J.txt" --error="$DATATOOLS/cedar_scripts/slurm_log/log-WCSim-mu-%J.txt" --time=23:59:00 --array=0-99 --job-name=mu "$DATATOOLS/cedar_scripts/run_WCSim_job.sh" "$name" "$data_dir" -n 1000 -e 100 -E 1500 -P mu- -d 4pi -p fix -x 0 -y 0 -z 0
+JOBTIME=`date` sbatch --output="$DATATOOLS/cedar_scripts/slurm_log/log-WCSim-gamma-%J.txt" --error="$DATATOOLS/cedar_scripts/slurm_log/log-WCSim-gamma-%J.txt" --time=23:59:00 --array=0-99 --job-name=gamma "$DATATOOLS/cedar_scripts/run_WCSim_job.sh" "$name" "$data_dir" -n 1000 -e 100 -E 1500 -P gamma -d 4pi -p fix -x 0 -y 0 -z 0
+JOBTIME=`date` sbatch --output="$DATATOOLS/cedar_scripts/slurm_log/log-WCSim-pi0-%J.txt" --error="$DATATOOLS/cedar_scripts/slurm_log/log-WCSim-pi0-%J.txt" --time=23:59:00 --array=0-99 --job-name=pi0 "$DATATOOLS/cedar_scripts/run_WCSim_job.sh" "$name" "$data_dir" -n 1000 -e 100 -E 1500 -P pi0 -d 4pi -p fix -x 0 -y 0 -z 0
