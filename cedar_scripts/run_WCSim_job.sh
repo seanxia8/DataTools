@@ -205,7 +205,8 @@ if [ ! -z "${runfiTQun}" ]; then
 #  runfiTQun.sh "${rootfile}" ${nevents} &> "${logfile}"
 fi
 
-if [ ! "${tmp_dir}" -ef "${data_dir}" ]; then
+#if [ ! "${tmp_dir}" -ef "${data_dir}" ]; then
+if [ "${tmp_dir}" != "${data_dir}" ]; then
   echo "[`date`] Copying from temp dir ${tmp_dir} to ${data_dir}"
   rsync -r "${tmp_dir}/" "${data_dir}/"
 fi
