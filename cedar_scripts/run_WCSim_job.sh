@@ -180,9 +180,9 @@ mkdir -p "$(dirname "${rootfile}")"
 mkdir -p "$(dirname "${logfile}")"
 cd "${G4WORKDIR}"
 if [ -x "${G4WORKDIR}/WCSim" ]; then
-  "${G4WORKDIR}/WCSim" "${macfile}" "${G4WORKDIR}/tuningNominal.mac" &> "${logfile}"
+    "${G4WORKDIR}/WCSim" "${macfile}" "${G4WORKDIR}/tuningNominal.mac" &> "${logfile}"
 else
-  "${G4WORKDIR}/bin/${G4SYSTEM}/WCSim" "${macfile}" "${G4WORKDIR}/tuningNominal.mac" &> "${logfile}"
+    "${G4WORKDIR}/bin/${G4SYSTEM}/WCSim" "${macfile}" "${G4WORKDIR}/tuningNominal.mac" &> "${logfile}"
 fi
 rm -f ${rootfile/.root/_flat.root}
 
