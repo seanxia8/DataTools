@@ -58,7 +58,7 @@ shift 2
 data_dir="${data_dir}/${name}"
 seed=${SLURM_ARRAY_TASK_ID}
 #geom="nuPRISM_mPMT"
-geom="nuPRISMShort_mPMT"
+geom="NuPRISMBeamTest_16cShort_mPMT"
 darkrate=0.1
 daqfile="${WCSIMDIR}/macros/daq.mac"
 orient="y"
