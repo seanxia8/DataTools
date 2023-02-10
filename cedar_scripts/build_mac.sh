@@ -27,7 +27,7 @@
 #for arg in "$@"; do
 #  echo $arg
 #done
-geom="NuPRISMBeamTest_16cShort_mPMT"
+geom="nuPRISMBeamTest_16cShort_mPMT"
 daqfile="${WCSIMDIR}/macros/daq.mac"
 seed=${SLURM_ARRAY_TASK_ID}
 orient="y"
