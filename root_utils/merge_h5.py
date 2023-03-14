@@ -4,7 +4,7 @@ import numpy as np
 
 def get_args():
     parser = argparse.ArgumentParser(description='merge hdf5 files with common datasets by concatenating them together')
-    parser.add_argument('input_files', type=str, nargs='+')
+    parser.add_argument('-i', '--input_files', type=str, nargs='+')
     parser.add_argument('-o', '--output_file', type=str)
     args = parser.parse_args()
     return args
